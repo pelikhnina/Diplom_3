@@ -38,6 +38,7 @@ public class TestUtil {
         homePage.clickOnAccountButton();
 
         ProfilePage profilePage = new ProfilePage(driver);
+        Assert.assertTrue(profilePage.isProfilePage());
         Assert.assertThat(profilePage.getEmail(), CoreMatchers.containsString(user.getEmail()));
         Assert.assertThat(profilePage.getName(), CoreMatchers.containsString(user.getName()));
     }

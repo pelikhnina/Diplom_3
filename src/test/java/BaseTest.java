@@ -24,12 +24,11 @@ public abstract class BaseTest {
                 break;
             case "yandex":
                 System.setProperty("webdriver.chrome.driver", "C:\\Users\\desum\\Downloads\\yandexdriver\\yandexdriver.exe");
-                options.setBinary("C:\\Users\\desum\\Downloads\\chrome-win64\\chrome-win64\\chrome.exe");
+                options.setBinary("C:\\Users\\desum\\AppData\\Local\\Yandex\\YandexBrowser\\Application\\browser.exe");
                 break;
             default:
                 throw new RuntimeException("Unknown browser driver");
         }
-
     }
 
     @After

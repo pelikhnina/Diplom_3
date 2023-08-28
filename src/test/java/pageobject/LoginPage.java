@@ -12,7 +12,6 @@ public class LoginPage {
 
     private static final By restorePasswordLink = By.xpath("//a[@href='/forgot-password']");
     private static final By loginHeader = By.xpath("//h2[text()='Вход']");
-    private static final By accountProfileLink = By.xpath("//a[@href='/account']");
     public LoginPage(WebDriver driver) {
         this.driver = driver;
     }
@@ -45,9 +44,6 @@ public class LoginPage {
         return driver.findElement(loginHeader).isDisplayed();
     }
 
-    private void clickOnProfileLink() {
-        driver.findElement(accountProfileLink).click();
-    }
 
     public void clickOnForgotLink() {
         driver.findElement(restorePasswordLink).click();

@@ -15,6 +15,7 @@ public class ProfilePage {
     private static final By logoutButton = By.xpath("//button[text()='Выход']");
     private static final By constructorButton = By.xpath("//a[@href='/']");
     private static final By logo = By.xpath("//div[@class='AppHeader_header__logo__2D0X2']");
+    private static final By profileHeader = By.xpath("//a[@href='/account/profile']");
 
     public String getName() {
         return driver.findElement(profileName).getAttribute("value");
@@ -27,6 +28,9 @@ public class ProfilePage {
     }
     public void clickOnLogo() {
         driver.findElement(logo).click();
+    }
+    public boolean isProfilePage() {
+        return driver.findElement(profileHeader).isDisplayed();
     }
 
     public void logout() {

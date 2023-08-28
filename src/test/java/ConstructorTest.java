@@ -29,7 +29,7 @@ public class ConstructorTest extends BaseTest {
         HomePage homePage = new HomePage(driver);
         homePage.clickOnFillingButton();
         boolean isActive = homePage.isFillingButtonActive();
-        Assert.assertTrue("Кнопка Начинка должна стать активной", isActive);
+        Assert.assertTrue("Кнопка Начинки должна стать активной", isActive);
     }
     @After
     public void tearDown() {
