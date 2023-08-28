@@ -16,6 +16,7 @@ public class HomePage {
     private final static String activeClassName = "tab_tab_type_current__2BEPc";
     private static final By accountButton = By.xpath("//a[@href='/account']");
     private final static By loginButton = By.xpath("//button[text()='Войти в аккаунт']");
+    private final static By homeHeader = By.xpath("//h1[text()='Соберите бургер']");
 
     public void clickOnBunButton() {
         driver.findElement(bunButton).click();
@@ -31,6 +32,9 @@ public class HomePage {
     }
     public void clickOnLoginButton() {
         driver.findElement(loginButton).click();
+    }
+    public boolean isHomePage() {
+        return driver.findElement(homeHeader).isDisplayed();
     }
 
     public boolean isBunButtonActive() {

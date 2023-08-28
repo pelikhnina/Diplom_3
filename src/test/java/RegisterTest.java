@@ -1,53 +1,41 @@
 import org.example.user.User;
 import org.example.user.UserGenerator;
-import org.hamcrest.CoreMatchers;
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import pageobject.HomePage;
-import pageobject.LoginPage;
-import pageobject.ProfilePage;
 import pageobject.RegisterPage;
 
 import java.util.concurrent.TimeUnit;
 
 public class RegisterTest extends BaseTest {
+    private User user;
     @Before
     public void setup() {
         super.setup();
+        this.user = TestUtil.createTestUser();
     }
     @Test
     public void registerTest() {
         driver.get(BASE_URL + "/register");
-        UserGenerator userGenerator = new UserGenerator();
-        User user = userGenerator.generateRandomUser();
-
         RegisterPage registerPage = new RegisterPage(driver);
         registerPage.register(user.getName(), user.getEmail(), user.getPassword());
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         driver.navigate().to(BASE_URL + "/login");
 
-        LoginPage loginPage = new LoginPage(driver);
-        loginPage.login(user.getEmail(), user.getPassword());
-
-        HomePage homePage = new HomePage(driver);
-        homePage.clickOnAccountButton();
-
-        ProfilePage profilePage = new ProfilePage(driver);
-
-        Assert.assertThat(profilePage.getEmail(), CoreMatchers.containsString(user.getEmail()));
-        Assert.assertThat(profilePage.getName(), CoreMatchers.containsString(user.getName()));
+        TestUtil.performLoginAndCheck(user, driver);
     }
 
     @Test
     public void registerInvalidPasswordTest() {
-        UserGenerator userGenerator = new UserGenerator();
-        User user = userGenerator.generateRandomUser();
-        user.setPassword(userGenerator.generateShortPassword());
-
         RegisterPage registerPage = new RegisterPage(driver);
+        user.setPassword(new UserGenerator().generateShortPassword());
         registerPage.register(user.getName(), user.getEmail(), user.getPassword());
 
         Assert.assertEquals("Некорректный пароль", registerPage.getPasswordError().getText());
+    }
+    @After
+    public void tearDown() {
+        TestUtil.cleanUp();
     }
 }
