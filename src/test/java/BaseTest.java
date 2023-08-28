@@ -9,6 +9,7 @@ public abstract class BaseTest {
     protected static final String BASE_URL = "https://stellarburgers.nomoreparties.site";
     @Before
     public void setup() {
+
         System.setProperty("webdriver.chrome.driver", "C:\\Users\\desum\\Downloads\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe");
 
         ChromeOptions options = new ChromeOptions();
