@@ -14,23 +14,6 @@ public class AuthService extends BaseService {
     }
 
     @Step
-    public ValidatableResponse loginUser(User user) {
-        return spec()
-                .body(user)
-                .post("/auth/login")
-                .then();
-    }
-
-    @Step
-    public ValidatableResponse updateUser(User user, String token) {
-        return spec()
-                .header("Authorization", "Bearer" + token)
-                .body(user)
-                .patch("/auth/user")
-                .then();
-    }
-
-    @Step
     public ValidatableResponse deleteUser(String token) {
         return spec()
                 .header("Authorization", "Bearer" + token)
