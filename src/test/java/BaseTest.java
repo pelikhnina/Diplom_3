@@ -11,7 +11,7 @@ public abstract class BaseTest {
     @Before
     public void setup() {
         setWebDriver("chrome");
-        options.addArguments("--no-sandbox", "--disable-dev-shm-usage");
+        options.addArguments("--no-sandbox", "--headless", "--disable-dev-shm-usage");
         driver = new ChromeDriver(options);
         driver.get(BASE_URL);
     }

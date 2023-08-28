@@ -4,13 +4,11 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.WebDriver;
 import pageobject.RegisterPage;
 
 import java.util.concurrent.TimeUnit;
 
 public class RegisterTest extends BaseTest {
-    private WebDriver driver;
     private User user;
     @Before
     public void setup() {
