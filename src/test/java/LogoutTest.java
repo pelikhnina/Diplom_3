@@ -3,6 +3,7 @@ import org.example.user.AuthService;
 import org.example.user.User;
 import org.example.user.UserAssertions;
 import org.example.user.UserGenerator;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import pageobject.LoginPage;
@@ -24,5 +25,7 @@ public class LogoutTest extends BaseTest {
 
         LoginPage loginPage = new LoginPage(driver);
         loginPage.login(user.getEmail(), user.getPassword());
+
+        Assert.assertTrue(loginPage.isLoginPage());
     }
 }
