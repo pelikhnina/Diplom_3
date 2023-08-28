@@ -8,7 +8,6 @@ import pageobject.LoginPage;
 import pageobject.ProfilePage;
 import pageobject.RegisterPage;
 
-import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 public class RegisterTest extends BaseTest {
