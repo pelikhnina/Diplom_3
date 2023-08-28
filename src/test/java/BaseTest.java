@@ -14,6 +14,8 @@ public abstract class BaseTest {
 
         ChromeOptions options = new ChromeOptions();
         options.setBinary("C:\\Users\\desum\\Downloads\\chrome-win64\\chrome-win64\\chrome.exe");
+        //options.addArguments("--no-sandbox", "--headless", "--disable-dev-shm-usage");
+        options.addArguments("--no-sandbox", "--disable-dev-shm-usage");
         driver = new ChromeDriver(options);
         driver.get(BASE_URL);
     }

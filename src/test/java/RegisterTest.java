@@ -4,6 +4,7 @@ import org.hamcrest.CoreMatchers;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import pageobject.HomePage;
 import pageobject.LoginPage;
 import pageobject.ProfilePage;
 import pageobject.RegisterPage;
@@ -14,22 +15,24 @@ public class RegisterTest extends BaseTest {
     @Before
     public void setup() {
         super.setup();
-        driver.get(BASE_URL + "/register");
     }
     @Test
     public void registerTest() {
+        driver.get(BASE_URL + "/register");
         UserGenerator userGenerator = new UserGenerator();
         User user = userGenerator.generateRandomUser();
 
         RegisterPage registerPage = new RegisterPage(driver);
         registerPage.register(user.getName(), user.getEmail(), user.getPassword());
+        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         driver.navigate().to(BASE_URL + "/login");
 
         LoginPage loginPage = new LoginPage(driver);
         loginPage.login(user.getEmail(), user.getPassword());
-        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
 
-        driver.navigate().to(BASE_URL + "/account/profile");
+        HomePage homePage = new HomePage(driver);
+        homePage.clickOnAccountButton();
+
         ProfilePage profilePage = new ProfilePage(driver);
 
         Assert.assertThat(profilePage.getEmail(), CoreMatchers.containsString(user.getEmail()));
