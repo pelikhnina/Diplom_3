@@ -10,6 +10,7 @@ public class LoginPage {
     private static final By inputPassword = By.name("Пароль");
     private static final By loginButton = By.xpath("//button[@class='button_button__33qZ0 button_button_type_primary__1O7Bx button_button_size_medium__3zxIa']");
 
+    private static final By restorePasswordLink = By.xpath("//a[@href='/forgot-password']");
     private static final By loginHeader = By.xpath("//h2[text()='Вход']");
     private static final By accountProfileLink = By.xpath("//a[@href='/account']");
     public LoginPage(WebDriver driver) {
@@ -46,6 +47,10 @@ public class LoginPage {
 
     private void clickOnProfileLink() {
         driver.findElement(accountProfileLink).click();
+    }
+
+    public void clickOnForgotLink() {
+        driver.findElement(restorePasswordLink).click();
     }
 
     public void login(String email, String password) {
