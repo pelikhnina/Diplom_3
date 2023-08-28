@@ -35,6 +35,6 @@ public class ProfileTest extends BaseTest {
     }
     @After
     public void tearDown() {
-        TestUtil.cleanUp();
+        TestUtil.cleanUp(driver);
     }
 }

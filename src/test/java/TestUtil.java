@@ -16,7 +16,6 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class TestUtil {
-
     private static final UserGenerator userGenerator = new UserGenerator();
     private static final AuthService authService = new AuthService();
     private static final List<String> accessTokens = new ArrayList<>();
@@ -42,7 +41,11 @@ public class TestUtil {
         Assert.assertThat(profilePage.getEmail(), CoreMatchers.containsString(user.getEmail()));
         Assert.assertThat(profilePage.getName(), CoreMatchers.containsString(user.getName()));
     }
-    public static void cleanUp() {
+    public static void cleanUp(WebDriver driver) {
+        if(driver != null) {
+            driver.quit();
+        }
+
         for (String accessToken : accessTokens) {
             authService.deleteUser(accessToken);
         }

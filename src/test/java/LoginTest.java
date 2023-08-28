@@ -2,12 +2,12 @@ import org.example.user.User;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.openqa.selenium.WebDriver;
 import pageobject.*;
 import java.util.concurrent.TimeUnit;
 
 public class LoginTest extends BaseTest {
     private User user;
-
     @Before
     public void setup() {
         super.setup();
@@ -52,6 +52,6 @@ public class LoginTest extends BaseTest {
 
     @After
     public void tearDown() {
-        TestUtil.cleanUp();
+        TestUtil.cleanUp(driver);
     }
 }

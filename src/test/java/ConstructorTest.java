@@ -1,3 +1,4 @@
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -29,5 +30,9 @@ public class ConstructorTest extends BaseTest {
         homePage.clickOnFillingButton();
         boolean isActive = homePage.isFillingButtonActive();
         Assert.assertTrue("Кнопка Начинка должна стать активной", isActive);
+    }
+    @After
+    public void tearDown() {
+        TestUtil.cleanUp(driver);
     }
 }

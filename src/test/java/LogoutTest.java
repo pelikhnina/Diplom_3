@@ -23,6 +23,6 @@ public class LogoutTest extends BaseTest {
     }
     @After
     public void tearDown() {
-        TestUtil.cleanUp();
+        TestUtil.cleanUp(driver);
     }
 }
