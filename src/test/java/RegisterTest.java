@@ -4,7 +4,6 @@ import org.hamcrest.CoreMatchers;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import pageobject.LoginPage;
 import pageobject.ProfilePage;
 import pageobject.RegisterPage;
@@ -36,5 +35,17 @@ public class RegisterTest extends BaseTest {
 
         Assert.assertThat(profilePage.getEmail(), CoreMatchers.containsString(user.getEmail()));
         Assert.assertThat(profilePage.getName(), CoreMatchers.containsString(user.getName()));
+    }
+
+    @Test
+    public void registerInvalidPasswordTest() {
+        UserGenerator userGenerator = new UserGenerator();
+        User user = userGenerator.generateRandomUser();
+        user.setPassword(userGenerator.generateShortPassword());
+
+        RegisterPage registerPage = new RegisterPage(driver);
+        registerPage.register(user.getName(), user.getEmail(), user.getPassword());
+
+        Assert.assertEquals("Некорректный пароль", registerPage.getPasswordError().getText());
     }
 }
