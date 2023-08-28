@@ -12,6 +12,7 @@ public class ProfilePage {
 
     private static final By profileName = By.xpath("//label[.='Имя']/../input");
     private static final By profileEmail = By.xpath("//label[.='Логин']/../input");
+    private static final By logoutButton = By.xpath("//button[text()='Выход']");
 
     public String getName() {
         return driver.findElement(profileName).getAttribute("value");
@@ -20,4 +21,7 @@ public class ProfilePage {
         return driver.findElement(profileEmail).getAttribute("value");
     }
 
+    public void logout() {
+        driver.findElement(logoutButton).click();
+    }
 }

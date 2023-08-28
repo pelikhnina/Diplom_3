@@ -15,6 +15,8 @@ public class HomePage {
     private final static By fillingButton = By.xpath("//div[contains(@class, 'tab_tab__1SPyG') and .//span[text()='Начинки']]");
     private final static String activeClassName = "tab_tab_type_current__2BEPc";
 
+    private final static By loginButton = By.xpath("//button[text()='Войти в аккаунт']");
+
     public void clickOnBunButton() {
         driver.findElement(bunButton).click();
     }
@@ -23,6 +25,10 @@ public class HomePage {
     }
     public void clickOnFillingButton() {
         driver.findElement(fillingButton).click();
+    }
+
+    public void clickOnLoginButton() {
+        driver.findElement(loginButton).click();
     }
 
     public boolean isBunButtonActive() {

@@ -16,6 +16,10 @@ public class UserGenerator {
         return result.toString();
     }
 
+    public String generateShortPassword() {
+        return generateRandomString(5);
+    }
+
     public User generateRandomUser() {
         String name = generateRandomString(5);  // Допустим, имя состоит из 5 символов
         String email = name.toLowerCase() + "@" + generateRandomString(5).toLowerCase() + ".com";
